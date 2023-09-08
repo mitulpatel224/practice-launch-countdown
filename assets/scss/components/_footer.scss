@@ -25,21 +25,21 @@ footer {
   &-facebook {
     &::before {
       @extend .bg-img;
-      background-image: url("../../../assets/images/icon-facebook.svg");
+      background-image: url("./../../../assets/images/icon-facebook.svg");
       background-position: center;
     }
   }
   &-pinterest {
     &::before {
       @extend .bg-img;
-      background-image: url("../../../assets/images/icon-pinterest.svg");
+      background-image: url("./../../../assets/images/icon-pinterest.svg");
       background-position: center;
     }
   }
   &-instagram {
     &::before {
       @extend .bg-img;
-      background-image: url("../../../assets/images/icon-instagram.svg");
+      background-image: url("./../../../assets/images/icon-instagram.svg");
       background-position: center;
     }
   }
