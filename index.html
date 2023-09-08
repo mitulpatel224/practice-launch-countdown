@@ -17,6 +17,11 @@
       href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body class="">
     <main class="d-flex flex-column">
@@ -29,29 +34,41 @@
           <div class="timer d-flex gap-1">
             <!-- CARD: DAYS -->
             <div class="timer-card d-flex flex-column gap-1">
-              <div class="timer-card-value">
-                <data>00</data>
+              <div class="timer-card-wrapper d-flex flex-column">
+                <!-- <div class="timer-card-glass"></div> -->
+                <div class="timer-card-value">
+                  <span id="days">00</span>
+                </div>
               </div>
               <span class="timer-card-label">DAYS</span>
             </div>
             <!-- CARD: HOURS -->
             <div class="timer-card d-flex flex-column gap-1">
-              <div class="timer-card-value">
-                <data>11</data>
+              <div class="timer-card-wrapper d-flex flex-column">
+                <!-- <span class="timer-card-glass"></span> -->
+                <div class="timer-card-value">
+                  <span id="hours">00</span>
+                </div>
               </div>
               <span class="timer-card-label">HOURS</span>
             </div>
             <!-- CARD: MINUTES -->
             <div class="timer-card d-flex flex-column gap-1">
-              <div class="timer-card-value">
-                <data>44</data>
+              <div class="timer-card-wrapper d-flex flex-column">
+                <!-- <span class="timer-card-glass"></span> -->
+                <div class="timer-card-value">
+                  <span id="minutes">00</span>
+                </div>
               </div>
               <span class="timer-card-label">MINUTES</span>
             </div>
             <!-- CARD: SECONDS -->
             <div class="timer-card d-flex flex-column gap-1">
-              <div class="timer-card-value">
-                <data>99</data>
+              <div class="timer-card-wrapper d-flex flex-column">
+                <!-- <span class="timer-card-glass"></span> -->
+                <div class="timer-card-value">
+                  <span id="seconds">00</span>
+                </div>
               </div>
               <span class="timer-card-label">SECONDS</span>
             </div>
@@ -92,4 +109,48 @@
       <!-- FOOTER END -->
     </main>
   </body>
+  <script>
+    // Padding '0' before single digit
+    const zeroPad = (num, places) => String(num).padStart(places, "0");
+
+    $("document").ready(() => {
+      let getRemainingTime = (countDownDate) => {
+        const now = new Date().getTime();
+        // Time to the date
+        const timeToDate = countDownDate - now;
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(timeToDate / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeToDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (timeToDate % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((timeToDate % (1000 * 60)) / 1000);
+        return { days, hours, minutes, seconds };
+      };
+
+      let $days = $("#days");
+      let $hours = $("#hours");
+      let $minutes = $("#minutes");
+      let $seconds = $("#seconds");
+
+      let setCountDownTimerUI = ({ days, hours, minutes, seconds }) => {
+        $days.text(zeroPad(days, 2));
+        $hours.text(zeroPad(hours, 2));
+        $minutes.text(zeroPad(minutes, 2));
+        $seconds.text(zeroPad(seconds, 2));
+        // $(".timer-card-glass").toggleClass("rotateX360");
+        // setTimeout(() => {
+        //   $(".timer-card-glass").toggleClass("rotateX360");
+        // }, 500);
+      };
+
+      setInterval(() => {
+        setCountDownTimerUI(
+          getRemainingTime(new Date("2024-06-05T18:30:00.000Z"))
+        );
+      }, 1000);
+    });
+  </script>
 </html>
