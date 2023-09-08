@@ -11,3 +11,14 @@
 .h-50 {
   width: 50%;
 }
+
+.container {
+  padding: 10px;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+@media (max-width: 375px) {
+  .container {
+  }
+}

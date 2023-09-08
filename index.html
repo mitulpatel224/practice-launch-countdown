@@ -18,21 +18,50 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="">
     <main class="d-flex flex-column">
       <!-- COUNTDOWN START -->
-      <section class="countdown">
+      <section class="countdown container">
         <div
           class="d-flex flex-column justify-content-center align-items-center flex-grow-1 h-100"
         >
-          <h1>We're launching soon</h1>
-          <div>Days Hours Minutes Seconds</div>
+          <h1 class="countdown-title">We're launching soon</h1>
+          <div class="timer d-flex gap-1">
+            <!-- CARD: DAYS -->
+            <div class="timer-card d-flex flex-column gap-1">
+              <div class="timer-card-value">
+                <data>00</data>
+              </div>
+              <span class="timer-card-label">DAYS</span>
+            </div>
+            <!-- CARD: HOURS -->
+            <div class="timer-card d-flex flex-column gap-1">
+              <div class="timer-card-value">
+                <data>11</data>
+              </div>
+              <span class="timer-card-label">HOURS</span>
+            </div>
+            <!-- CARD: MINUTES -->
+            <div class="timer-card d-flex flex-column gap-1">
+              <div class="timer-card-value">
+                <data>44</data>
+              </div>
+              <span class="timer-card-label">MINUTES</span>
+            </div>
+            <!-- CARD: SECONDS -->
+            <div class="timer-card d-flex flex-column gap-1">
+              <div class="timer-card-value">
+                <data>99</data>
+              </div>
+              <span class="timer-card-label">SECONDS</span>
+            </div>
+          </div>
         </div>
       </section>
       <!-- COUNTDOWN END -->
 
       <!-- FOOTER START -->
-      <footer class="d-flex flex-column">
+      <footer class="d-flex flex-column container">
         <!-- SOCIAL MEDIA START -->
         <ul class="nav d-flex justify-content-center">
           <li class="nav-item">
