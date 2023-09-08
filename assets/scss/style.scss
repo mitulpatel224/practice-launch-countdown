@@ -1,13 +1,6 @@
 @import "base/";
+@import "components/";
 
-$font-family: "Red Hat Text", sans-serif;
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: $font-family;
-  font-weight: 700;
-  font-size: 14px;
-}
+// UTILITIES
+@import "utilities/flex";
+@import "utilities/size";

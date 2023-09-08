@@ -1,0 +1,27 @@
+html,
+body,
+main {
+  position: relative;
+  height: 100%;
+}
+body {
+  font-family: $font-family;
+  font-weight: 700;
+  font-size: 14px;
+  background-image: linear-gradient($VeryVeryDarkBlue, $DarkDeSaturatedBlue);
+
+  &::before {
+    @extend .bg-img;
+    background-image: url("../../assets/images/bg-stars.svg");
+  }
+  &::after {
+    @extend .bg-img;
+    background-image: url("../../assets/images/pattern-hills.svg");
+    background-position: bottom right;
+  }
+}
+h1,
+h2,
+h3 {
+  color: $White;
+}

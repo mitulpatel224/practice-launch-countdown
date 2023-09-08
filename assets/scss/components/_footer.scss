@@ -1,0 +1,46 @@
+footer {
+  position: relative;
+  z-index: 1;
+  .nav {
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .attribution {
+    text-align: center;
+    color: $VeryVeryDarkBlue;
+  }
+}
+
+.icon {
+  display: inline-block;
+  position: relative;
+  height: 30px;
+  width: 30px;
+  color: gray;
+  border-radius: 0px;
+  overflow: hidden;
+  &:hover {
+    color: red;
+  }
+  &-facebook {
+    &::before {
+      @extend .bg-img;
+      background-image: url("../../../assets/images/icon-facebook.svg");
+      background-position: center;
+    }
+  }
+  &-pinterest {
+    &::before {
+      @extend .bg-img;
+      background-image: url("../../../assets/images/icon-pinterest.svg");
+      background-position: center;
+    }
+  }
+  &-instagram {
+    &::before {
+      @extend .bg-img;
+      background-image: url("../../../assets/images/icon-instagram.svg");
+      background-position: center;
+    }
+  }
+}
