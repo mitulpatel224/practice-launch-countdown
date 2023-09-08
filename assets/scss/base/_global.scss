@@ -12,12 +12,12 @@ body {
   object-fit: cover;
   &::before {
     @extend .bg-img;
-    background-image: url("./../../assets/images/bg-stars.svg");
+    background-image: url("/assets/images/bg-stars.svg");
     z-index: -1;
   }
   &::after {
     @extend .bg-img;
-    background-image: url("./../../assets/images/pattern-hills.svg");
+    background-image: url("/assets/images/pattern-hills.svg");
     background-position: bottom center;
     background-size: contain;
     z-index: -1;

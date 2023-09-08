@@ -24,11 +24,11 @@ body {
   object-fit: cover;
 }
 body::before {
-  background-image: url("./../../assets/images/bg-stars.svg");
+  background-image: url("/assets/images/bg-stars.svg");
   z-index: -1;
 }
 body::after {
-  background-image: url("./../../assets/images/pattern-hills.svg");
+  background-image: url("/assets/images/pattern-hills.svg");
   background-position: bottom center;
   background-size: contain;
   z-index: -1;
@@ -178,15 +178,15 @@ footer .attribution {
   color: red;
 }
 .icon-facebook::before {
-  background-image: url("./../../../assets/images/icon-facebook.svg");
+  background-image: url("/assets/images/icon-facebook.svg");
   background-position: center;
 }
 .icon-pinterest::before {
-  background-image: url("./../../../assets/images/icon-pinterest.svg");
+  background-image: url("/assets/images/icon-pinterest.svg");
   background-position: center;
 }
 .icon-instagram::before {
-  background-image: url("./../../../assets/images/icon-instagram.svg");
+  background-image: url("/assets/images/icon-instagram.svg");
   background-position: center;
 }
 
