@@ -4,6 +4,7 @@
   "description": "![Design preview for the Launch countdown timer coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
+    "sass:watch": "sass --watch assets/scss/style.scss style.css",
     "build": "sass assets/scss/style.scss style.css"
   },
   "repository": {
