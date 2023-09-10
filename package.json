@@ -1,6 +1,6 @@
 {
   "name": "launch-countdown-time",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "![Design preview for the Launch countdown timer coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
