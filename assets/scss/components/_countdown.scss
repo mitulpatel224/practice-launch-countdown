@@ -1,31 +1,14 @@
-.box-shadow {
-  box-shadow: 0px 7px 0px 0px $VeryVeryDarkBlue;
-}
-.timer-card-indent {
-  content: "";
-  position: absolute;
-  top: 44%;
-  width: 1rem;
-  height: 1rem;
-  background-color: $VeryVeryDarkBlue;
-  border-radius: 0 100% 100% 0;
-  z-index: 4;
-}
+// Card Drop keyframe animation
+@keyframes card-fold {
+  0% {
+    opacity: 1;
+  }
 
-// ANIMATION
-.card-flip-animation {
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  perspective: 500px;
-  transform-origin: center center;
-}
-.rotateX360 {
-  transform: rotateX(90deg);
-}
-
-// TODO: MOVE TO COMMON
-.bg-DarkDeSaturatedBlue {
-  background-color: $DarkDeSaturatedBlue;
+  100% {
+    opacity: 0;
+    background-color: $DarkDeSaturatedBlue;
+    transform: rotateX(-180deg);
+  }
 }
 
 .countdown {
@@ -34,52 +17,53 @@
     margin-bottom: 80px;
   }
 }
+
 .timer {
-  text-transform: uppercase;
   &-card {
-    text-align: center;
-    position: relative;
-    border-radius: 10px;
+    padding: 10px;
     overflow: hidden;
-    &-wrapper {
-      position: relative;
-    }
-    &-glass {
-      position: absolute;
-      height: 90%;
-      width: 100%;
-      background-color: rgba(52, 54, 80, 0.9);
-      z-index: 2;
-      border-radius: 10px;
-      @extend .card-flip-animation;
-    }
-    &-value {
-      @extend .box-shadow;
-      @extend .bg-DarkDeSaturatedBlue;
-      @extend .card-flip-animation;
-      border-radius: 10px;
-      padding: 18px;
-      color: $SofRed;
-      font-size: 1.75rem;
-      // max-width: 72px;
-      text-align: center;
-      position: relative;
-      margin: 0 auto 10px auto;
-      z-index: 1;
-      &::before {
-        @extend .timer-card-indent;
-        left: -5px;
-      }
-      &::after {
-        @extend .timer-card-indent;
-        right: -5px;
-        border-radius: 100% 0 0 100%;
-      }
-    }
+    text-align: center;
     &-label {
       color: $GrayishBlue;
       font-size: 0.5rem;
       letter-spacing: 0.2rem;
+    }
+    &-time {
+      background-color: $DarkDeSaturatedBlue;
+      margin-bottom: 10px;
+      color: $SofRed;
+      font-size: 1.75rem;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 7px 0px 0px $VeryVeryDarkBlue;
+
+      // ALL CHILD
+      > * {
+        padding: 25px;
+      }
+
+      // GLASS: OVERWRITE
+      &-glass {
+        border: 0px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: -5px;
+        right: -5px;
+        height: 50%;
+        background-color: hsl(235, 16%, 14%, 0.3);
+        color: darken($color: $SofRed, $amount: 5);
+        transform-origin: bottom;
+        // perspective-origin: bottom center;
+        // transition: all 1s;
+      }
+      &-glass.drop {
+        // transform: rotateX(-180deg);
+        // opacity: 0;
+        background-color: hsl(235, 16%, 14%, 0.4);
+        animation: card-fold 900ms;
+      }
     }
   }
 }
@@ -87,9 +71,8 @@
 @media (min-width: 768px) {
   .timer {
     &-card {
-      &-value {
-        min-width: 110px;
-        font-size: 4em;
+      &-time {
+        font-size: 4rem;
       }
       &-label {
         font-size: 1rem;

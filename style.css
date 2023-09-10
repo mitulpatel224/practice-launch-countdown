@@ -20,7 +20,7 @@ body {
   font-family: "Red Hat Text", sans-serif;
   font-weight: 700;
   font-size: 14px;
-  background-image: linear-gradient(hsl(234, 17%, 12%), hsl(236, 21%, 26%));
+  background-image: linear-gradient(to bottom, hsl(234, 17%, 12%) 30%, hsl(236, 21%, 26%) 75%, hsl(345, 49%, 36%) 100%, hsl(234, 17%, 12%) 100%);
   object-fit: cover;
 }
 body::before {
@@ -63,36 +63,16 @@ ul {
   list-style: none;
 }
 
-.box-shadow, .timer-card-value {
-  box-shadow: 0px 7px 0px 0px hsl(234, 17%, 12%);
+@keyframes card-fold {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    background-color: hsl(236, 21%, 26%);
+    transform: rotateX(-180deg);
+  }
 }
-
-.timer-card-indent, .timer-card-value::after, .timer-card-value::before {
-  content: "";
-  position: absolute;
-  top: 44%;
-  width: 1rem;
-  height: 1rem;
-  background-color: hsl(234, 17%, 12%);
-  border-radius: 0 100% 100% 0;
-  z-index: 4;
-}
-
-.card-flip-animation, .timer-card-value, .timer-card-glass {
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  perspective: 500px;
-  transform-origin: center center;
-}
-
-.rotateX360 {
-  transform: rotateX(90deg);
-}
-
-.bg-DarkDeSaturatedBlue, .timer-card-value {
-  background-color: hsl(236, 21%, 26%);
-}
-
 .countdown {
   height: 100%;
 }
@@ -100,53 +80,49 @@ ul {
   margin-bottom: 80px;
 }
 
-.timer {
-  text-transform: uppercase;
-}
 .timer-card {
-  text-align: center;
-  position: relative;
-  border-radius: 10px;
+  padding: 10px;
   overflow: hidden;
-}
-.timer-card-wrapper {
-  position: relative;
-}
-.timer-card-glass {
-  position: absolute;
-  height: 90%;
-  width: 100%;
-  background-color: rgba(52, 54, 80, 0.9);
-  z-index: 2;
-  border-radius: 10px;
-}
-.timer-card-value {
-  border-radius: 10px;
-  padding: 18px;
-  color: hsl(345, 95%, 68%);
-  font-size: 1.75rem;
   text-align: center;
-  position: relative;
-  margin: 0 auto 10px auto;
-  z-index: 1;
-}
-.timer-card-value::before {
-  left: -5px;
-}
-.timer-card-value::after {
-  right: -5px;
-  border-radius: 100% 0 0 100%;
 }
 .timer-card-label {
   color: hsl(237, 18%, 59%);
   font-size: 0.5rem;
   letter-spacing: 0.2rem;
 }
+.timer-card-time {
+  background-color: hsl(236, 21%, 26%);
+  margin-bottom: 10px;
+  color: hsl(345, 95%, 68%);
+  font-size: 1.75rem;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 7px 0px 0px hsl(234, 17%, 12%);
+}
+.timer-card-time > * {
+  padding: 25px;
+}
+.timer-card-time-glass {
+  border: 0px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: -5px;
+  right: -5px;
+  height: 50%;
+  background-color: hsla(235, 16%, 14%, 0.3);
+  color: #fa4774;
+  transform-origin: bottom;
+}
+.timer-card-time-glass.drop {
+  background-color: hsla(235, 16%, 14%, 0.4);
+  animation: card-fold 900ms;
+}
 
 @media (min-width: 768px) {
-  .timer-card-value {
-    min-width: 110px;
-    font-size: 4em;
+  .timer-card-time {
+    font-size: 4rem;
   }
   .timer-card-label {
     font-size: 1rem;
@@ -175,7 +151,7 @@ footer .attribution {
   overflow: hidden;
 }
 .icon:hover {
-  color: red;
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(300deg) brightness(104%) contrast(97%);
 }
 .icon-facebook::before {
   background-image: url("./assets/images/icon-facebook.svg");
