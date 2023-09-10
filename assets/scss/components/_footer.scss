@@ -20,7 +20,8 @@ footer {
   border-radius: 0px;
   overflow: hidden;
   &:hover {
-    color: red;
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(300deg)
+      brightness(104%) contrast(97%);
   }
   &-facebook {
     &::before {
