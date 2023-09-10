@@ -72,7 +72,7 @@ ul {
     opacity: 1;
   }
   100% {
-    opacity: 0;
+    opacity: 0.4;
     background-color: hsl(236, 21%, 26%);
     transform: rotateX(-180deg);
   }

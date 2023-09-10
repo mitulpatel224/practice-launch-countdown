@@ -114,7 +114,7 @@
     // Padding '0' before single digit
     const zeroPad = (num, places) => String(num).padStart(places, "0");
     // Set the ISO formatted countDownTime
-    const countDownTime = "Sep 10 2023, 21:30:50";
+    const countDownTime = "Sep 10 2023, 21:50:50";
 
     $("document").ready(() => {
       let remainingTime;
@@ -163,12 +163,11 @@
         const el = $(selector);
         el.addClass(className);
         animationTimeouts.forEach((item) => clearTimeout(item));
-        animationTimeouts = [
-          ...animationTimeouts,
+        animationTimeouts.push(
           setTimeout(() => {
             el.removeClass(className);
-          }, 500),
-        ];
+          }, 500)
+        );
       };
 
       let animateChange = ({ days, hours, minutes, seconds }) => {
