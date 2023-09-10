@@ -47,6 +47,10 @@ h1 {
   font-size: 1.5rem;
 }
 
+a {
+  color: hsl(237, 18%, 59%);
+}
+
 @media (max-width: 425px) {
   body::after {
     background-position: bottom right;
@@ -81,7 +85,7 @@ ul {
 }
 
 .timer-card {
-  padding: 10px;
+  padding: 5px;
   overflow: hidden;
   text-align: center;
 }
@@ -101,7 +105,7 @@ ul {
   box-shadow: 0px 7px 0px 0px hsl(234, 17%, 12%);
 }
 .timer-card-time > * {
-  padding: 25px;
+  padding: 10px;
 }
 .timer-card-time-glass {
   border: 0px;
@@ -121,6 +125,12 @@ ul {
 }
 
 @media (min-width: 768px) {
+  .timer {
+    gap: 1;
+  }
+  .timer-card {
+    padding: 10px;
+  }
   .timer-card-time {
     font-size: 4rem;
   }
@@ -138,7 +148,7 @@ footer .nav {
 }
 footer .attribution {
   text-align: center;
-  color: hsl(234, 17%, 12%);
+  color: hsl(237, 18%, 59%);
 }
 
 .icon {

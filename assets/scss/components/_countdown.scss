@@ -20,7 +20,7 @@
 
 .timer {
   &-card {
-    padding: 10px;
+    padding: 5px;
     overflow: hidden;
     text-align: center;
     &-label {
@@ -40,7 +40,7 @@
 
       // ALL CHILD
       > * {
-        padding: 25px;
+        padding: 10px;
       }
 
       // GLASS: OVERWRITE
@@ -70,7 +70,9 @@
 
 @media (min-width: 768px) {
   .timer {
+    gap: 1;
     &-card {
+      padding: 10px;
       &-time {
         font-size: 4rem;
       }
