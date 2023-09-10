@@ -1,0 +1,54 @@
+html,
+body,
+main {
+  position: relative;
+  height: 100%;
+}
+body {
+  font-family: $font-family;
+  font-weight: 700;
+  font-size: 14px;
+  background-image: linear-gradient(
+    to bottom,
+    $VeryVeryDarkBlue 30%,
+    $DarkDeSaturatedBlue 75%,
+    hsl(345, 49%, 36%) 100%,
+    $VeryVeryDarkBlue 100%
+  );
+  object-fit: cover;
+  &::before {
+    @extend .bg-img;
+    background-image: url("./assets/images/bg-stars.svg");
+    z-index: -1;
+  }
+  &::after {
+    @extend .bg-img;
+    background-image: url("./assets/images/pattern-hills.svg");
+    background-position: bottom center;
+    background-size: contain;
+    z-index: -1;
+  }
+}
+h1,
+h2,
+h3 {
+  color: $White;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 10px;
+}
+h1 {
+  font-size: 1.5rem;
+}
+a {
+  color: $GrayishBlue;
+}
+
+@media (max-width: 425px) {
+  body {
+    &::after {
+      background-position: bottom right;
+      background-size: auto;
+    }
+  }
+}

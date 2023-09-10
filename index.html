@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+
+    <title>Frontend Mentor | Launch countdown timer</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="">
+    <main class="d-flex flex-column">
+      <!-- COUNTDOWN START -->
+      <section class="countdown container">
+        <div
+          class="d-flex flex-column justify-content-center align-items-center flex-grow-1 h-100"
+        >
+          <h1 class="countdown-title">We're launching soon</h1>
+          <div class="timer d-flex">
+            <!-- CARD: DAYS -->
+            <div class="timer-card">
+              <div class="timer-card-time">
+                <div class="timer-card-time-value days">00</div>
+                <div class="timer-card-time-glass days">00</div>
+                <div class="timer-card-time-glass days days-dropable">00</div>
+              </div>
+              <div class="timer-card-label">DAYS</div>
+            </div>
+            <!-- CARD: HOURS -->
+            <div class="timer-card">
+              <div class="timer-card-time">
+                <div class="timer-card-time-value hours">00</div>
+                <div class="timer-card-time-glass hours">00</div>
+                <div class="timer-card-time-glass hours hours-dropable">00</div>
+              </div>
+              <div class="timer-card-label">HOURS</div>
+            </div>
+            <!-- CARD: MINUTES -->
+            <div class="timer-card">
+              <div class="timer-card-time">
+                <div class="timer-card-time-value minutes">00</div>
+                <div class="timer-card-time-glass minutes">00</div>
+                <div class="timer-card-time-glass minutes minutes-dropable">
+                  00
+                </div>
+              </div>
+              <div class="timer-card-label">MINUTES</div>
+            </div>
+            <!-- CARD: SECONDS -->
+            <div class="timer-card">
+              <div class="timer-card-time">
+                <div class="timer-card-time-value seconds">00</div>
+                <div class="timer-card-time-glass seconds">00</div>
+                <div class="timer-card-time-glass seconds seconds-dropable">
+                  00
+                </div>
+              </div>
+              <div class="timer-card-label">SECONDS</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- COUNTDOWN END -->
+
+      <!-- FOOTER START -->
+      <footer class="d-flex flex-column container">
+        <!-- SOCIAL MEDIA START -->
+        <ul class="nav d-flex justify-content-center">
+          <li class="nav-item">
+            <a href="#">
+              <span class="icon icon-facebook"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#">
+              <span class="icon icon-pinterest"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#">
+              <span class="icon icon-instagram"></span>
+            </a>
+          </li>
+        </ul>
+        <!-- SOCIAL MEDIA END -->
+        <div class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+            >Frontend Mentor</a
+          >. Coded by
+          <a href="https://github.com/mitulpatel224/">mitulpatel224</a>.
+        </div>
+      </footer>
+      <!-- FOOTER END -->
+    </main>
+  </body>
+  <script>
+    // Padding '0' before single digit
+    const zeroPad = (num, places) => String(num).padStart(places, "0");
+    // Set the ISO formatted countDownTime
+    const countDownTime = "Jan 01 2024, 00:00:00";
+
+    $("document").ready(() => {
+      let remainingTime;
+      let animationTimeouts = [];
+      let changeTimeout;
+      let timerIntervalInstance;
+      let stopTimerTimeOut;
+
+      let $days = $(".days");
+      let $hours = $(".hours");
+      let $minutes = $(".minutes");
+      let $seconds = $(".seconds");
+
+      // Get Calculated remaining time from the countDownTime
+      let getRemainingTime = (countDownDate) => {
+        const now = new Date().getTime();
+        // Time to the date
+        const timeToDate = countDownDate - now;
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(timeToDate / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeToDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (timeToDate % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((timeToDate % (1000 * 60)) / 1000);
+        return { days, hours, minutes, seconds };
+      };
+
+      let setCountDownTimerUI = ({ days, hours, minutes, seconds }) => {
+        clearInterval(changeTimeout);
+        animateChange({ days, hours, minutes, seconds });
+        changeTimeout = setTimeout(() => {
+          $days.text(zeroPad(days, 2));
+          $hours.text(zeroPad(hours, 2));
+          $minutes.text(zeroPad(minutes, 2));
+          $seconds.text(zeroPad(seconds, 2));
+        }, 500);
+        stopTimerTimeOut = setTimeout(() => {
+          stopTimer(getRemainingTime(new Date(countDownTime)));
+        }, 1000);
+      };
+
+      let toggleClass = (selector, className = "drop") => {
+        const el = $(selector);
+        el.addClass(className);
+        animationTimeouts.forEach((item) => clearTimeout(item));
+        animationTimeouts.push(
+          setTimeout(() => {
+            el.removeClass(className);
+          }, 500)
+        );
+      };
+
+      let animateChange = ({ days, hours, minutes, seconds }) => {
+        if (remainingTime.days != days) {
+          toggleClass(".days-dropable");
+        }
+        if (remainingTime.hours != hours) {
+          toggleClass(".hours-dropable");
+        }
+        if (remainingTime.minutes != minutes) {
+          toggleClass(".minutes-dropable");
+        }
+        if (remainingTime.seconds != seconds) {
+          toggleClass(".seconds-dropable");
+        }
+      };
+
+      let invalidCountDown = ({ days, hours, minutes, seconds }) => {
+        return days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0;
+      };
+
+      let stopTimer = ({ days, hours, minutes, seconds }) => {
+        if (invalidCountDown({ days, hours, minutes, seconds })) {
+          clearInterval(timerIntervalInstance);
+          clearInterval(stopTimerTimeOut);
+        }
+      };
+      if (!invalidCountDown(getRemainingTime(new Date(countDownTime)))) {
+        remainingTime = getRemainingTime(new Date(countDownTime));
+        setCountDownTimerUI(getRemainingTime(new Date(countDownTime)));
+
+        timerIntervalInstance = setInterval(() => {
+          setCountDownTimerUI(getRemainingTime(new Date(countDownTime)));
+        }, 1000);
+      }
+    });
+  </script>
+</html>

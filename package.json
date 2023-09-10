@@ -1,0 +1,26 @@
+{
+  "name": "launch-countdown-time",
+  "version": "1.0.0",
+  "description": "![Design preview for the Launch countdown timer coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "sass:watch": "sass --watch assets/scss/style.scss style.css",
+    "build": "sass assets/scss/style.scss style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitulpatel224/practice-launch-countdown.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "scss",
+    "JS"
+  ],
+  "author": "mitulpatel224",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mitulpatel224/practice-launch-countdown/issues"
+  },
+  "homepage": "https://github.com/mitulpatel224/practice-launch-countdown#readme"
+}

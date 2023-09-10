@@ -1,0 +1,233 @@
+.bg-img, .icon-instagram::before, .icon-pinterest::before, .icon-facebook::before, body::after, body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+html,
+body,
+main {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  background-image: linear-gradient(to bottom, hsl(234, 17%, 12%) 30%, hsl(236, 21%, 26%) 75%, hsl(345, 49%, 36%) 100%, hsl(234, 17%, 12%) 100%);
+  object-fit: cover;
+}
+body::before {
+  background-image: url("./assets/images/bg-stars.svg");
+  z-index: -1;
+}
+body::after {
+  background-image: url("./assets/images/pattern-hills.svg");
+  background-position: bottom center;
+  background-size: contain;
+  z-index: -1;
+}
+
+h1,
+h2,
+h3 {
+  color: hsl(0, 0%, 100%);
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 10px;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+a {
+  color: hsl(237, 18%, 59%);
+}
+
+@media (max-width: 425px) {
+  body::after {
+    background-position: bottom right;
+    background-size: auto;
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+@keyframes card-fold {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+    background-color: hsl(236, 21%, 26%);
+    transform: rotateX(-180deg);
+  }
+}
+.countdown {
+  height: 100%;
+}
+.countdown-title {
+  margin-bottom: 80px;
+}
+
+.timer-card {
+  padding: 5px;
+  overflow: hidden;
+  text-align: center;
+}
+.timer-card-label {
+  color: hsl(237, 18%, 59%);
+  font-size: 0.5rem;
+  letter-spacing: 0.2rem;
+}
+.timer-card-time {
+  background-color: hsl(236, 21%, 26%);
+  margin-bottom: 10px;
+  color: hsl(345, 95%, 68%);
+  font-size: 1.75rem;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 7px 0px 0px hsl(234, 17%, 12%);
+}
+.timer-card-time > * {
+  padding: 10px;
+}
+.timer-card-time-glass {
+  border: 0px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: -5px;
+  right: -5px;
+  height: 50%;
+  background-color: hsla(235, 16%, 14%, 0.3);
+  color: #fa4774;
+  transform-origin: bottom;
+}
+.timer-card-time-glass.drop {
+  background-color: hsla(235, 16%, 14%, 0.4);
+  animation: card-fold 900ms;
+}
+
+@media (min-width: 768px) {
+  .timer {
+    gap: 1;
+  }
+  .timer-card {
+    padding: 10px;
+  }
+  .timer-card-time {
+    font-size: 4rem;
+  }
+  .timer-card-label {
+    font-size: 1rem;
+  }
+}
+footer {
+  position: relative;
+  z-index: 1;
+}
+footer .nav {
+  gap: 20px;
+  margin-bottom: 20px;
+}
+footer .attribution {
+  text-align: center;
+  color: hsl(237, 18%, 59%);
+}
+
+.icon {
+  display: inline-block;
+  position: relative;
+  height: 30px;
+  width: 30px;
+  color: gray;
+  border-radius: 0px;
+  overflow: hidden;
+}
+.icon:hover {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(300deg) brightness(104%) contrast(97%);
+}
+.icon-facebook::before {
+  background-image: url("./assets/images/icon-facebook.svg");
+  background-position: center;
+}
+.icon-pinterest::before {
+  background-image: url("./assets/images/icon-pinterest.svg");
+  background-position: center;
+}
+.icon-instagram::before {
+  background-image: url("./assets/images/icon-instagram.svg");
+  background-position: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-3 {
+  gap: 3rem;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.h-50 {
+  width: 50%;
+}
+
+.container {
+  padding: 10px;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=style.css.map */
