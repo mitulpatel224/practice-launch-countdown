@@ -96,7 +96,7 @@ ul {
 }
 .timer-card-time {
   background-color: hsl(236, 21%, 26%);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: hsl(345, 95%, 68%);
   font-size: 1.75rem;
   position: relative;
@@ -105,15 +105,38 @@ ul {
   box-shadow: 0px 7px 0px 0px hsl(234, 17%, 12%);
 }
 .timer-card-time > * {
-  padding: 10px;
+  height: 64px;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.timer-card-time-value {
+  position: relative;
+}
+.timer-card-time-value::before, .timer-card-time-value::after {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+  background-color: hsl(234, 17%, 12%);
+  height: 20px;
+  width: 20px;
+  top: 40%;
+  z-index: 1;
+}
+.timer-card-time-value::before {
+  left: -10px;
+}
+.timer-card-time-value::after {
+  right: -10px;
 }
 .timer-card-time-glass {
+  display: block;
+  line-height: 2.3;
   border: 0px;
   overflow: hidden;
   position: absolute;
   top: 0;
-  left: -5px;
-  right: -5px;
   height: 50%;
   background-color: hsla(235, 16%, 14%, 0.3);
   color: #fa4774;
@@ -132,7 +155,16 @@ ul {
     padding: 10px;
   }
   .timer-card-time {
-    font-size: 4rem;
+    font-size: 3.75rem;
+  }
+  .timer-card-time > * {
+    height: 120px;
+    width: 140px;
+  }
+  .timer-card-time-glass {
+    height: 60px;
+    display: block;
+    line-height: 2;
   }
   .timer-card-label {
     font-size: 1rem;

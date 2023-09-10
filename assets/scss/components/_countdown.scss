@@ -30,7 +30,7 @@
     }
     &-time {
       background-color: $DarkDeSaturatedBlue;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       color: $SofRed;
       font-size: 1.75rem;
       position: relative;
@@ -40,17 +40,42 @@
 
       // ALL CHILD
       > * {
-        padding: 10px;
+        height: 64px;
+        width: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-
+      &-value {
+        position: relative;
+        &::before,
+        &::after {
+          position: absolute;
+          content: "";
+          border-radius: 50%;
+          background-color: $VeryVeryDarkBlue;
+          height: 20px;
+          width: 20px;
+          top: 40%;
+          z-index: 1;
+        }
+        &::before {
+          left: -10px;
+        }
+        &::after {
+          right: -10px;
+        }
+      }
       // GLASS: OVERWRITE
       &-glass {
+        display: block;
+        line-height: 2.3;
         border: 0px;
         overflow: hidden;
         position: absolute;
         top: 0;
-        left: -5px;
-        right: -5px;
+        // left: -20px;
+        // right: -20px;
         height: 50%;
         background-color: hsl(235, 16%, 14%, 0.3);
         color: darken($color: $SofRed, $amount: 5);
@@ -74,7 +99,16 @@
     &-card {
       padding: 10px;
       &-time {
-        font-size: 4rem;
+        font-size: 3.75rem;
+        > * {
+          height: 120px;
+          width: 140px;
+        }
+        &-glass {
+          height: 60px;
+          display: block;
+          line-height: 2;
+        }
       }
       &-label {
         font-size: 1rem;
